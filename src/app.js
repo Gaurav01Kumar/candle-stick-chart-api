@@ -8,5 +8,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.json());
 app.use("/api",candlestickRoute)
-
+app.get("/",(req,res)=>{
+  res.send("hello");
+})
 module.exports=app;
