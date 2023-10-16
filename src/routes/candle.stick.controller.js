@@ -1,9 +1,11 @@
 const config = require("../config");
 const axios = require("axios");
 
+
 const candlestickController = {};
 
 candlestickController.getCandleStickData = async (req, res) => {
+  
   try {
     const { symbol, interval, startTime, endTime, limit } = req.query;
 
@@ -21,7 +23,7 @@ candlestickController.getCandleStickData = async (req, res) => {
       }
     });
   } catch (error) {
-    
+    console.log(error)
     return res.status(500).json({ error: "INTERNAL SERVER ERROR" });
   }
 };
