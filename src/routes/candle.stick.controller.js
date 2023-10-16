@@ -15,13 +15,18 @@ candlestickController.getCandleStickData = async (req, res) => {
       endTime || Date.now() + 86400000
     }&limit=${limit || 100}`;
 
-    await axios.get(query,headers:{ 'Content-Type': 'application/json',}).then((response) => {
-      if (response.data) {
-        return res.status(200).json({ data: response.data });
-      } else {
-        return res.status(400).json({ message: "Bad request" });
-      }
-    });
+ await axios.get(query, {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+}).then((response) => {
+  if (response.data) {
+    return res.status(200).json({ data: response.data });
+  } else {
+    return res.status(400).json({ message: "Bad request" });
+  }
+});
+
   } catch (error) {
     console.log(error)
     return res.status(500).json({ error:error });
